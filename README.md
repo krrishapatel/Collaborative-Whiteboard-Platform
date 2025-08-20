@@ -234,17 +234,6 @@ docker-compose up -d
 4. Add tests for new features
 5. Submit a pull request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- **Documentation**: Check the docs folder
-- **Issues**: Report bugs on GitHub
-- **Discussions**: Join community discussions
-- **Email**: Contact the development team
-
 ## 🔮 Roadmap
 
 ### **Phase 1: Core Platform (Current)**
@@ -271,6 +260,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 🏢 Audit logging
 - 🏢 Custom branding
 
----
-
-**Built with ❤️ for collaborative teams everywhere**
