@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta
+      name="description"
+      content="Real-time collaborative whiteboard platform with Figma integration"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <title>Collaborative Whiteboard Platform</title>
+    
+    <!-- Loading screen styles -->
+    <style>
+      /* CSS Reset for loading screen */
+      #loading-screen,
+      #loading-screen *,
+      #loading-screen *::before,
+      #loading-screen *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+      }
+      
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .loading-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+        margin-top: 0;
+        white-space: nowrap;
+        text-align: center;
+        width: 100%;
+        position: relative;
+        top: -300px;
+      }
+      
+      .loading-subtitle {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 20px;
+        line-height: 1.4;
+        margin-top: 0;
+        position: relative;
+        top: -300px;
+        white-space: nowrap;
+        text-align: center;
+        width: 100%;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-top: 24px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-progress {
+        width: 200px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        margin-top: 16px;
+        overflow: hidden;
+      }
+      
+      .loading-progress-bar {
+        height: 100%;
+        background: white;
+        border-radius: 2px;
+        animation: progress 2s ease-in-out infinite;
+      }
+      
+      @keyframes progress {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
+      }
+      
+      .loading-hidden {
+        opacity: 0;
+        pointer-events: none;
+        display: none !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Hide loading screen completely when React app is running */
+      #root:not(:empty) ~ #loading-screen,
+      #root:not(:empty) + #loading-screen {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        z-index: -9999 !important;
+      }
+
+      .loading-logo {
+        width: 800px;
+        height: 800px;
+        color: white;
+        margin-bottom: 5px;
+        animation: logoFloat 3s ease-in-out infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        padding: 0 !important;
+        margin: 0 0 5px 0 !important;
+      }
+      
+      @keyframes logoFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      .loading-logo span {
+        font-family: 'Inter', sans-serif;
+        font-weight: 900;
+        font-size: 600px;
+        color: white !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 0 !important;
+        margin: 0 !important;
+        display: inline-block !important;
+        line-height: 1 !important;
+        width: auto !important;
+        height: auto !important;
+        min-width: auto !important;
+        min-height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        overflow: visible !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      
+      /* Force remove any potential white backgrounds */
+      .loading-logo *,
+      .loading-logo *::before,
+      .loading-logo *::after {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-logo">
+        <span>W</span>
+      </div>
+      <div class="loading-text">Collaborative Whiteboard</div>
+      <div class="loading-subtitle">Loading your workspace...</div>
+      <div class="loading-spinner"></div>
+      <div class="loading-progress">
+        <div class="loading-progress-bar"></div>
+      </div>
+    </div>
+    
+    <!-- React App Root -->
+    <div id="root"></div>
+    
+    <!-- Loading Screen Script -->
+    <script>
+      // Hide loading screen when React app is ready
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.classList.add('loading-hidden');
+            setTimeout(function() {
+              loadingScreen.style.display = 'none';
+              // Completely remove the loading screen from DOM
+              loadingScreen.remove();
+            }, 300);
+          }
+        }, 1000);
+      });
+      
+      // Fallback: hide loading screen after 3 seconds and remove it completely
+      setTimeout(function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.classList.add('loading-hidden');
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+            // Completely remove the loading screen from DOM
+            loadingScreen.remove();
+          }, 300);
+        }
+      }, 3000);
+      
+      // Additional safety: hide loading screen when React app starts
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if React app is mounting
+        const checkReactApp = setInterval(function() {
+          const root = document.getElementById('root');
+          if (root && root.children.length > 0) {
+            // React app is loaded, hide loading screen
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+              loadingScreen.classList.add('loading-hidden');
+              setTimeout(function() {
+                loadingScreen.style.display = 'none';
+                loadingScreen.remove();
+              }, 300);
+            }
+            clearInterval(checkReactApp);
+          }
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

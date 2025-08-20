@@ -1,0 +1,283 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+  
+  * {
+    @apply border-gray-200;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-500;
+  }
+  
+  .btn-accent {
+    @apply btn bg-accent-600 text-white hover:bg-accent-700 focus:ring-accent-500;
+  }
+  
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+  
+  .btn-warning {
+    @apply btn bg-warning-600 text-white hover:bg-warning-700 focus:ring-warning-500;
+  }
+  
+  .btn-error {
+    @apply btn bg-error-600 text-white hover:bg-error-700 focus:ring-error-500;
+  }
+  
+  .btn-outline {
+    @apply btn border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-gray-500;
+  }
+  
+  .btn-ghost {
+    @apply btn text-gray-700 hover:bg-gray-100 focus:ring-gray-500;
+  }
+  
+  .input {
+    @apply block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 disabled:bg-gray-50 disabled:cursor-not-allowed;
+  }
+  
+  .card {
+    @apply rounded-xl border border-gray-200 bg-white shadow-soft;
+  }
+  
+  .tooltip {
+    @apply absolute z-50 rounded-lg bg-gray-900 px-2 py-1 text-xs text-white opacity-0 transition-opacity duration-200 pointer-events-none;
+  }
+  
+  .tooltip::after {
+    @apply absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-gray-900;
+    content: '';
+  }
+}
+
+/* Custom scrollbar for whiteboard */
+.whiteboard-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.whiteboard-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.whiteboard-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.whiteboard-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.whiteboard-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Remote cursor styles */
+.remote-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  transition: all 0.1s ease-out;
+}
+
+.remote-cursor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.remote-cursor::after {
+  content: attr(data-username);
+  position: absolute;
+  top: 12px;
+  left: 0;
+  background: currentColor;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Element animations */
+.whiteboard-element {
+  transition: all 0.2s ease-out;
+}
+
+.whiteboard-element:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.whiteboard-element.selected {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Drawing canvas styles */
+.drawing-canvas {
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.drawing-canvas.drawing {
+  cursor: none;
+}
+
+/* Toolbar styles */
+.toolbar {
+  @apply fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 rounded-xl bg-white p-3 shadow-strong;
+}
+
+.toolbar-tool {
+  @apply flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 transition-all duration-200 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300;
+}
+
+.toolbar-tool.active {
+  @apply bg-primary-100 border-primary-300 text-primary-700;
+}
+
+/* Color picker styles */
+.color-picker {
+  @apply absolute z-50 rounded-lg border border-gray-200 bg-white p-3 shadow-strong;
+}
+
+.color-option {
+  @apply h-6 w-6 rounded-full border-2 border-gray-200 cursor-pointer transition-all duration-200 hover:scale-110;
+}
+
+.color-option.active {
+  @apply border-gray-800 scale-110;
+}
+
+/* Sticky note styles */
+.sticky-note {
+  @apply relative min-h-[120px] min-w-[120px] rounded-lg border-2 border-gray-200 bg-yellow-100 p-3 shadow-soft cursor-move;
+  resize: both;
+  overflow: auto;
+}
+
+.sticky-note:hover {
+  @apply border-gray-300 shadow-medium;
+}
+
+.sticky-note.selected {
+  @apply border-primary-400 shadow-strong;
+}
+
+.sticky-note-content {
+  @apply w-full h-full resize-none border-none bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none;
+}
+
+/* Layer panel styles */
+.layer-panel {
+  @apply fixed right-4 top-4 z-50 w-64 rounded-xl bg-white p-4 shadow-strong;
+}
+
+.layer-item {
+  @apply flex items-center justify-between rounded-lg px-3 py-2 hover:bg-gray-50 cursor-pointer;
+}
+
+.layer-item.active {
+  @apply bg-primary-50 text-primary-700;
+}
+
+/* Context menu styles */
+.context-menu {
+  @apply absolute z-50 min-w-[160px] rounded-lg bg-white py-1 shadow-strong border border-gray-200;
+}
+
+.context-menu-item {
+  @apply flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer;
+}
+
+.context-menu-item.danger {
+  @apply text-error-600 hover:bg-error-50;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.loading-text {
+  @apply loading h-4 w-32;
+}
+
+.loading-button {
+  @apply loading h-10 w-24;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .toolbar {
+    @apply left-2 top-auto bottom-4 flex-row;
+  }
+  
+  .layer-panel {
+    @apply right-2 top-auto bottom-4 w-56;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  .dark-mode .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .dark-mode .input {
+    @apply bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400;
+  }
+  
+  .dark-mode .btn-secondary {
+    @apply bg-gray-700 text-gray-100 hover:bg-gray-600;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .whiteboard-element {
+    break-inside: avoid;
+  }
+}
