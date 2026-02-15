@@ -127,7 +127,7 @@ RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=100
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 collaborative-whiteboard-platform/
@@ -156,7 +156,7 @@ collaborative-whiteboard-platform/
 └── package.json
 ```
 
-## 🎯 Core Components
+##  Core Components
 
 ### **Whiteboard Canvas**
 - **Fabric.js Integration**: Advanced drawing capabilities
