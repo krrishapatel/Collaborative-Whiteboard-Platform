@@ -1,40 +1,40 @@
-# 🚀 Collaborative Whiteboard Platform
+#  Collaborative Whiteboard Platform
 
 A real-time, Figma-inspired collaborative whiteboard platform that enables teams to brainstorm, design, and collaborate seamlessly with advanced features like live cursors, sticky notes, collaborative drawing, and Figma API integration.
 
-## ✨ Features
+##  Features
 
-### 🎨 **Real-Time Collaboration**
+###  **Real-Time Collaboration**
 - **Live Cursor Tracking**: See where team members are working in real-time
 - **User Presence**: Visual indicators showing who's online and active
 - **Instant Updates**: All changes sync across all users immediately
 - **Conflict Resolution**: Advanced algorithms for handling concurrent edits
 
-### 🖌️ **Advanced Drawing Tools**
+###  **Advanced Drawing Tools**
 - **Multi-tool Support**: Pen, brush, shapes, text, images, and more
 - **Layer Management**: Organize elements in logical layers
 - **Undo/Redo System**: Collaborative undo/redo with history tracking
 - **Custom Brushes**: Create and share custom brush styles
 
-### 📝 **Sticky Notes & Text**
+###  **Sticky Notes & Text**
 - **Rich Text Editor**: Bold, italic, lists, links, and formatting
 - **Color Coding**: Categorize notes by color and priority
 - **Voting System**: Allow team members to vote on ideas
 - **Export Options**: Convert notes to markdown, PDF, or images
 
-### 🔗 **Figma Integration**
+###  **Figma Integration**
 - **Import Elements**: Drag & drop Figma components directly
 - **Export to Figma**: Send whiteboard elements back to Figma
 - **Design System Sync**: Maintain consistency with Figma design tokens
 - **Version Control**: Track changes between Figma and whiteboard
 
-### 🚀 **Performance & Scalability**
+###  **Performance & Scalability**
 - **100+ Concurrent Users**: Engineered for large teams
 - **40% Latency Reduction**: Optimized state synchronization
 - **Real-time Conflict Resolution**: Handle multiple simultaneous edits
 - **Offline Support**: Work without internet connection
 
-## 🏗️ Tech Stack
+##  Tech Stack
 
 ### **Frontend**
 - **React 18** with TypeScript
@@ -58,7 +58,7 @@ A real-time, Figma-inspired collaborative whiteboard platform that enables teams
 - **Rate limiting** and security
 - **Load balancing** support
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### **Prerequisites**
 - Node.js 18+ and npm 8+
@@ -176,7 +176,7 @@ collaborative-whiteboard-platform/
 - **Design System Sync**: Maintain consistency
 - **Version Control**: Track design evolution
 
-## 🔒 Security Features
+##  Security Features
 
 - **JWT Authentication**: Secure user sessions
 - **Role-based Access**: Granular permissions
@@ -185,7 +185,7 @@ collaborative-whiteboard-platform/
 - **CORS Protection**: Secure cross-origin requests
 - **Helmet Security**: Additional security headers
 
-## 📊 Performance Metrics
+##  Performance Metrics
 
 - **Latency**: <100ms for real-time updates
 - **Throughput**: Support 100+ concurrent users
@@ -193,7 +193,7 @@ collaborative-whiteboard-platform/
 - **Response Time**: <200ms for API calls
 - **Memory Usage**: Optimized for efficiency
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 # Run all tests
@@ -208,7 +208,7 @@ npm run test:integration
 npm run test:e2e
 ```
 
-## 🚀 Deployment
+##  Deployment
 
 ### **Development**
 ```bash
@@ -226,7 +226,7 @@ npm start
 docker-compose up -d
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -234,29 +234,29 @@ docker-compose up -d
 4. Add tests for new features
 5. Submit a pull request
 
-## 🔮 Roadmap
+##  Roadmap
 
 ### **Phase 1: Core Platform (Current)**
-- ✅ Basic whiteboard functionality
-- ✅ Real-time collaboration
-- ✅ User authentication
-- ✅ Basic drawing tools
+-  Basic whiteboard functionality
+-  Real-time collaboration
+-  User authentication
+-  Basic drawing tools
 
 ### **Phase 2: Advanced Features (Next)**
-- 🔄 Advanced drawing tools
-- 🔄 Layer management
-- 🔄 Sticky notes system
-- 🔄 Performance optimization
+-  Advanced drawing tools
+-  Layer management
+-  Sticky notes system
+-  Performance optimization
 
 ### **Phase 3: Figma Integration (Future)**
-- 📋 Figma API integration
-- 📋 Import/export functionality
-- 📋 Design system sync
-- 📋 Version control
+-  Figma API integration
+-  Import/export functionality
+-  Design system sync
+-  Version control
 
 ### **Phase 4: Enterprise Features (Future)**
-- 🏢 SSO integration
-- 🏢 Advanced permissions
-- 🏢 Audit logging
-- 🏢 Custom branding
+-  SSO integration
+-  Advanced permissions
+-  Audit logging
+-  Custom branding
 
